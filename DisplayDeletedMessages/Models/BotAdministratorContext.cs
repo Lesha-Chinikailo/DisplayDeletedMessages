@@ -6,13 +6,29 @@ namespace DisplayDeletedMessages.Models;
 
 public partial class BotAdministratorContext : DbContext
 {
-    public BotAdministratorContext()
+    private BotAdministratorContext()
     {
     }
 
-    public BotAdministratorContext(DbContextOptions<BotAdministratorContext> options)
+    private static BotAdministratorContext _context;
+
+    public static BotAdministratorContext getInstance()
+    {
+        if(_context == null)
+            _context = new BotAdministratorContext();
+        return _context;
+    }
+
+    private BotAdministratorContext(DbContextOptions<BotAdministratorContext> options)
         : base(options)
     {
+    }
+
+    public static BotAdministratorContext getInstance(DbContextOptions<BotAdministratorContext> options)
+    {
+        if (_context == null)
+            _context = new BotAdministratorContext(options);
+        return _context;
     }
 
     public virtual DbSet<Datejoined> Datejoineds { get; set; }

@@ -18,7 +18,7 @@ namespace DisplayDeletedMessages
     /// </summary>
     public partial class MainWindow : Window
     {
-        BotAdministratorContext context = new BotAdministratorContext();
+        BotAdministratorContext context = BotAdministratorContext.getInstance();
         private Deletedmessage? _deletedmessage = null;
         private int _countOfMessages;
         private string _addToPathInFront = "../../../../";
@@ -63,7 +63,10 @@ namespace DisplayDeletedMessages
             User user = context.Users.Where(u => u.Id == _deletedmessage.UserId).Single();
             if(_deletedmessage.TypeMessage == "TEXT")
             {
-                MessageBox.Show(_deletedmessage.MessageOrPath, $"{user.Username} прислал сообщение", MessageBoxButton.OK, MessageBoxImage.None);
+                MessageBox.Show(_deletedmessage.MessageOrPath, 
+                    $"{(user.Name != null ? user.Name : user.Username)} прислал сообщение", 
+                    MessageBoxButton.OK, 
+                    MessageBoxImage.None);
 
             }
             if (_deletedmessage.TypeMessage == "PHOTO")

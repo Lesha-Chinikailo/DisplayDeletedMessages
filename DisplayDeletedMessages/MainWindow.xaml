@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DisplayDeletedMessages"
         mc:Ignorable="d"
+        WindowState="Maximized"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <DataGrid x:Name="dateGridListMessages"
@@ -13,7 +14,7 @@
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id"  Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="UserId"  Binding="{Binding UserId}"/>
+                <DataGridTextColumn Header="Username"  Binding="{Binding Username}"/>
                 <DataGridTextColumn Header="DatetimeOfMessageSending" Binding="{Binding DatetimeOfMessageSending}"/>
                 <DataGridTextColumn Header="TypeMessage" Binding="{Binding TypeMessage}"/>
                 <DataGridTextColumn Header="ReasonForDeleted" Binding="{Binding ReasonForDeleted}"/>
