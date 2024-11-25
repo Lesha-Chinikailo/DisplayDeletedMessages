@@ -1,0 +1,32 @@
+﻿<Window x:Class="DisplayDeletedMessages.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DisplayDeletedMessages"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <DataGrid x:Name="dateGridListMessages"
+                  d:ItemsSource="{d:SampleData ItemCount=1}"
+                  SelectionChanged="dateGridListMessages_SelectionChanged"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"  Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="UserId"  Binding="{Binding UserId}"/>
+                <DataGridTextColumn Header="DatetimeOfMessageSending" Binding="{Binding DatetimeOfMessageSending}"/>
+                <DataGridTextColumn Header="TypeMessage" Binding="{Binding TypeMessage}"/>
+                <DataGridTextColumn Header="ReasonForDeleted" Binding="{Binding ReasonForDeleted}"/>
+                <DataGridTemplateColumn Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="BtnShowContentInDataGridClicked">show</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="MessageOrPath" Binding="{Binding MessageOrPath}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
